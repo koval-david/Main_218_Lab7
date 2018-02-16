@@ -22,7 +22,7 @@
 uint16_t A1 = 0;                        // A1 input on H-Bridge Driver
 uint16_t A2 = 0;                        // A2 input on H-Bridge Driver
 uint16_t EdgeA = 0;                     // Most previous edge from IC1 buffer
-uint16_t EdgeD = 0;                     // Most receent edge from IC1 buffer
+uint16_t EdgeD = 0;                     // Most recent edge from IC1 buffer
 uint16_t IC1_period = 0;                // IC1 interrupt period, difference between EdgeD and EdgeA
 float speed = 0.0;                      // Speed of motor in revolutions per second
 
@@ -111,7 +111,7 @@ int main ( void )  //main function that....
     CONFIG_RB12_AS_DIG_OUTPUT();        // Initialize PIN RB12 as digital output
     
     /* Initialize ports and other one-time code */
-    A1 = p_1;                           // Set motor to initially rotate left at minimum speed (50% duty cycle)
+    A1 = p_1;                           // Set motor to initialy rotate left at minimum speed (50% duty cycle)
     A2 = 0;                             // Set A2 to zero to allow motor to turn left
     EN_12 = 1;                          // Enable H-Bridge Driver
     _T2IE = 1;                          // Enable Timer 2 Interrupt
@@ -181,7 +181,7 @@ int main ( void )  //main function that....
             }
         }
         outString("The motor is rotating at ");     // Output string to Terminal
-        speed = motorSpeed(IC1_period);             // Calcuate speed of motor in rev/s from captured period
+        speed = motorSpeed(IC1_period);             // Calculate speed of motor in rev/s from captured period
         printf("%.2f", speed);                      // Display speed to Terminal
         outString(" rev/s\r\n\n");                  // Display units of speed
         DELAY_MS(1000);                             // 1 second delay
