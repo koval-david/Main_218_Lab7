@@ -26,10 +26,10 @@ uint16_t EdgeD = 0;                     // Most recent edge from IC1 buffer
 uint16_t IC1_period = 0;                // IC1 interrupt period, difference between EdgeD and EdgeA
 float speed = 0.0;                      // Speed of motor in revolutions per second
 
-// Calculates the speed of a motor (rev/s) with a 94.1:1 gear ratio (PPR = 1185.36), provided the period.
+// Calculates the speed of a motor (rev/s) with a 98.78:1 gear ratio (PPR = 1128.8), provided the period.
 // Using a period of 0.2us (0.2 us per tck).
 float motorSpeed(uint16_t period) {
-    return 1.0/(1185.36 * period * 0.0000002);
+    return 1.0/(1128.8 * period * 0.0000002);
 }
 
 // Initializes the Input Capture Peripheral.
